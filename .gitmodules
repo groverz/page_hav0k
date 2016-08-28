@@ -1,4 +1,4 @@
 [submodule "sh"]
-	path = 'sh'
-	url = git@github.com:groverz/sh.git
+	path = sh
+	url = https://github.com/groverz/sh.git
 
