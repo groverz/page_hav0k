@@ -1,0 +1,11 @@
+#!bin/bash
+
+sudo apt-get update
+sudo apt-get install -y nginx nginx-extras mysql-server php-fpm php-mysql
+
+sudo mkdir /app
+sudo chown www-data:www-data /app
+sudo mkdir /app/default
+sudo chown www-data:www-data /app
+
+sudo useradd -G www-data h0

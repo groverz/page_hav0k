@@ -1,0 +1,24 @@
+#!/bin/bash 
+
+apt install -y curl zsh git mc mosh language-pack-ru python-software-properties 
+apt-get update
+
+git config --global color.ui true
+git config --global user.name "h0"
+git config --global user.email "hav0k@me.com"
+
+adduser --quiet --shell /bin/zsh --gecos '' --disabled-password h0
+ntpdate ru.pool.ntp.org
+
+touch /etc/sudoers.d/h0
+chmod 440 /etc/sudoers.d/h0
+echo "h0 ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/h0
+
+usermod -a -G adm,dialout,cdrom,floppy,audio,dip,video,plugdev,netdev,www-data h0
+mkdir /home/h0/.ssh
+chown h0:h0 /home/h0/.ssh
+chmod 700 /home/h0/.ssh
+
+touch /home/h0/.ssh/authorized_keys
+chown h0. /home/h0/.ssh/authorized_keys
+chmod 600 /home/h0/.ssh/authorized_keys

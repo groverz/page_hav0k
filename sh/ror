@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#Setup Ruby, Rails, Postgress
+
+sudo apt-get update
+sudo apt-get -y install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+
+cd /tmp
+wget http://ftp.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
+tar -xzvf ruby-2.3.1.tar.gz
+cd ruby-2.3.1/
+./configure
+make
+sudo make install
+ruby -v
+
+gem install bundler
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo gem install rails -v 4.2.6
+rbenv rehash
+
+sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install postgresql-common
+sudo apt-get -y install postgresql-9.5 libpq-dev
